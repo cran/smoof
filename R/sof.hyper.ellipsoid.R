@@ -20,7 +20,7 @@ makeHyperEllipsoidFunction = function(dimensions) {
       id = "x",
       lower = rep(-5.12, dimensions),
       upper = rep(5.12, dimensions),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeHyperEllipsoidFunction, "tags"),
     global.opt.params = rep(0, dimensions),
@@ -31,4 +31,4 @@ makeHyperEllipsoidFunction = function(dimensions) {
 class(makeHyperEllipsoidFunction) = c("function", "smoof_generator")
 attr(makeHyperEllipsoidFunction, "name") = c("Hyper-Ellipsoid Function")
 attr(makeHyperEllipsoidFunction, "type") = c("single-objective")
-attr(makeHyperEllipsoidFunction, "tags") = c("unimodal", "convex", "continuous")
+attr(makeHyperEllipsoidFunction, "tags") = c("unimodal", "convex", "continuous", "scalable")

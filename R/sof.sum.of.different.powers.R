@@ -20,7 +20,7 @@ makeSumOfDifferentSquaresFunction = function(dimensions) {
       id = "x",
       lower = rep(-1, dimensions),
       upper = rep(1, dimensions),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeSumOfDifferentSquaresFunction, "tags"),
     global.opt.params = rep(0, dimensions),
@@ -31,4 +31,4 @@ makeSumOfDifferentSquaresFunction = function(dimensions) {
 class(makeSumOfDifferentSquaresFunction) = c("function", "smoof_generator")
 attr(makeSumOfDifferentSquaresFunction, "name") = c("Sum of Different Squares Function")
 attr(makeSumOfDifferentSquaresFunction, "type") = c("single-objective")
-attr(makeSumOfDifferentSquaresFunction, "tags") = c("unimodal", "continuous")
+attr(makeSumOfDifferentSquaresFunction, "tags") = c("unimodal", "continuous", "scalable")

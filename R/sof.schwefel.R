@@ -24,7 +24,7 @@ makeSchwefelFunction = function(dimensions) {
       id = "x",
       lower = rep(-500, dimensions),
       upper = rep(500, dimensions),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = c("continuous", "multimodal"),
     global.opt.params = rep(420.9687, dimensions),
@@ -35,4 +35,4 @@ makeSchwefelFunction = function(dimensions) {
 class(makeSchwefelFunction) = c("function", "smoof_generator")
 attr(makeSchwefelFunction, "name") = c("Schwefel function")
 attr(makeSchwefelFunction, "type") = c("single-objective")
-attr(makeSchwefelFunction, "tags") = c("continuous", "multimodal")
+attr(makeSchwefelFunction, "tags") = c("continuous", "multimodal", "scalable")

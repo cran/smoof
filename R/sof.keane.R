@@ -20,8 +20,9 @@ makeKeaneFunction = function() {
       id = "x",
       lower = c(0, 0),
       upper = c(10, 10),
-      vector = FALSE
+      vector = TRUE
     ),
+    minimize = FALSE,
     tags = attr(makeKeaneFunction, "tags"),
     global.opt.params = matrix(
       c(0, 1.39325,
