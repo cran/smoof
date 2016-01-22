@@ -13,9 +13,12 @@
 #' @export
 makeCosineMixtureFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = "Cosine Mixture Function",
+    id = paste0("cosineMixture", dimensions, "d"),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       a = -0.1 * sum(cos(5 * pi * x))
       b = sum(x^2)
       return (a - b)
@@ -35,6 +38,6 @@ makeCosineMixtureFunction = function(dimensions) {
 }
 
 class(makeCosineMixtureFunction) = c("function", "smoof_generator")
-attr(makeCosineMixtureFunction, "name") = c("Cosine Mixture Function")
+attr(makeCosineMixtureFunction, "name") = c("Cosine Mixture")
 attr(makeCosineMixtureFunction, "type") = c("single-objective")
-attr(makeCosineMixtureFunction, "tags") = c("discontinuous", "non-differentiable", "separable", "scalable", "multimodal")
+attr(makeCosineMixtureFunction, "tags") = c("single-objective", "discontinuous", "non-differentiable", "separable", "scalable", "multimodal")

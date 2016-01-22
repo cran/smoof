@@ -14,7 +14,9 @@
 makeGiuntaFunction = function() {
   makeSingleObjectiveFunction(
     name = "Giunta Function",
+    id = "giunta_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = 1.067 * x - 1
       b = sin(a)
       0.6 + sum(b + b^2 + 0.02 * sin(4 * a))
@@ -33,6 +35,6 @@ makeGiuntaFunction = function() {
 }
 
 class(makeGiuntaFunction) = c("function", "smoof_generator")
-attr(makeGiuntaFunction, "name") = c("Giunta Function")
+attr(makeGiuntaFunction, "name") = c("Giunta")
 attr(makeGiuntaFunction, "type") = c("single-objective")
-attr(makeGiuntaFunction, "tags") = c("continuous", "differentiable", "separable", "multimodal")
+attr(makeGiuntaFunction, "tags") = c("single-objective", "continuous", "differentiable", "separable", "multimodal")

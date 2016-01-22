@@ -13,7 +13,9 @@
 makeCarromTableFunction = function() {
   makeSingleObjectiveFunction(
     name = "Carrom Table Function",
+    id = "carromTable_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       (-1 / 30) * exp(2 * abs(1 - (sqrt(x[1]^2 + x[2]^2) / pi))) * cos(x[1])^2 * cos(x[2])^2
     },
     par.set = makeNumericParamSet(
@@ -35,6 +37,6 @@ makeCarromTableFunction = function() {
 }
 
 class(makeCarromTableFunction) = c("function", "smoof_generator")
-attr(makeCarromTableFunction, "name") = c("Carrom Table Function")
+attr(makeCarromTableFunction, "name") = c("Carrom Table")
 attr(makeCarromTableFunction, "type") = c("single-objective")
-attr(makeCarromTableFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeCarromTableFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

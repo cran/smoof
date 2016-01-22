@@ -13,7 +13,9 @@
 makeGoldsteinPriceFunction = function() {
   makeSingleObjectiveFunction(
     name = "Goldstein-Price Function",
+    id = "goldsteinPrice_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       xx1 = x[1]^2
       xx2 = x[2]^2
       xx12 = x[1] * x[2]
@@ -35,6 +37,6 @@ makeGoldsteinPriceFunction = function() {
 }
 
 class(makeGoldsteinPriceFunction) = c("function", "smoof_generator")
-attr(makeGoldsteinPriceFunction, "name") = c("Goldstein-Price Function")
+attr(makeGoldsteinPriceFunction, "name") = c("Goldstein-Price")
 attr(makeGoldsteinPriceFunction, "type") = c("single-objective")
-attr(makeGoldsteinPriceFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeGoldsteinPriceFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

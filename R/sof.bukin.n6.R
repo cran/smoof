@@ -15,7 +15,9 @@
 makeBukinN6Function = function() {
   makeSingleObjectiveFunction(
     name = "Bukin Function N.6",
+    id = "bukin06_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       100 * sqrt(abs(x[2] - 0.01 * x[1]^2)) + 0.01 * abs(x[1] + 10)
     },
     par.set = makeNumericParamSet(
@@ -32,6 +34,6 @@ makeBukinN6Function = function() {
 }
 
 class(makeBukinN6Function) = c("function", "smoof_generator")
-attr(makeBukinN6Function, "name") = c("Bukin Function N. 6")
+attr(makeBukinN6Function, "name") = c("Bukin N. 6")
 attr(makeBukinN6Function, "type") = c("single-objective")
-attr(makeBukinN6Function, "tags") = c("continuous", "non-differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeBukinN6Function, "tags") = c("single-objective", "continuous", "non-differentiable", "non-separable", "non-scalable", "multimodal")

@@ -14,7 +14,9 @@
 makePriceN2Function = function() {
   makeSingleObjectiveFunction(
     name = "Price Function N. 2",
+    id = "price02_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       1 + sin(x[1])^2 + sin(x[2])^2 - 0.1 * exp(-x[1]^2 - x[2]^2)
     },
     par.set = makeNumericParamSet(
@@ -31,6 +33,6 @@ makePriceN2Function = function() {
 }
 
 class(makePriceN2Function) = c("function", "smoof_generator")
-attr(makePriceN2Function, "name") = c("Price Function N. 2")
+attr(makePriceN2Function, "name") = c("Price N. 2")
 attr(makePriceN2Function, "type") = c("single-objective")
-attr(makePriceN2Function, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makePriceN2Function, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

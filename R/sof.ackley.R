@@ -15,9 +15,12 @@
 #' @export
 makeAckleyFunction = function(dimensions) {
   assertCount(dimensions, na.ok = FALSE)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Ackley Function", sep = ""),
+    id = paste0("ackley_", dimensions, "d"),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       n = length(x)
       a = 20
       b = 0.2
@@ -40,6 +43,6 @@ makeAckleyFunction = function(dimensions) {
 }
 
 class(makeAckleyFunction) = c("function", "smoof_generator")
-attr(makeAckleyFunction, "name") = c("Ackley Function")
+attr(makeAckleyFunction, "name") = c("Ackley")
 attr(makeAckleyFunction, "type") = c("single-objective")
-attr(makeAckleyFunction, "tags") = c("continuous", "multimodal", "differentiable", "non-separable", "scalable")
+attr(makeAckleyFunction, "tags") = c("single-objective", "continuous", "multimodal", "differentiable", "non-separable", "scalable")

@@ -11,7 +11,9 @@
 makeZettlFunction = function() {
   makeSingleObjectiveFunction(
     name = "Zettl Function",
+    id = "zettl_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       (x[1]^2 + x[2]^2 - 2 * x[1])^2 + 0.25 * x[1]
     },
     par.set = makeNumericParamSet(
@@ -28,6 +30,6 @@ makeZettlFunction = function() {
 }
 
 class(makeZettlFunction) = c("function", "smoof_generator")
-attr(makeZettlFunction, "name") = c("Zettl Function")
+attr(makeZettlFunction, "name") = c("Zettl")
 attr(makeZettlFunction, "type") = c("single-objective")
-attr(makeZettlFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")
+attr(makeZettlFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

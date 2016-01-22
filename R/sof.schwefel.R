@@ -14,9 +14,12 @@
 #' @export
 makeSchwefelFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Schwefel function", sep = ""),
+    id = paste0("schwefel_", dimensions, "d"),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       sum(-x * sin(sqrt(abs(x))))
     },
     par.set = makeNumericParamSet(
@@ -33,6 +36,6 @@ makeSchwefelFunction = function(dimensions) {
 }
 
 class(makeSchwefelFunction) = c("function", "smoof_generator")
-attr(makeSchwefelFunction, "name") = c("Schwefel function")
+attr(makeSchwefelFunction, "name") = c("Schwefel")
 attr(makeSchwefelFunction, "type") = c("single-objective")
-attr(makeSchwefelFunction, "tags") = c("continuous", "multimodal", "scalable")
+attr(makeSchwefelFunction, "tags") = c("single-objective", "continuous", "multimodal", "scalable")

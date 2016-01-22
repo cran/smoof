@@ -9,9 +9,12 @@
 #' @export
 makeSumOfDifferentSquaresFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Sum of Different Squares Function", sep = ""),
+    id = paste0("sumOfDifferentSquares_", dimensions, "d"),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       n = length(x)
       sum(abs(x)^(1:n + 1))
     },
@@ -29,6 +32,6 @@ makeSumOfDifferentSquaresFunction = function(dimensions) {
 }
 
 class(makeSumOfDifferentSquaresFunction) = c("function", "smoof_generator")
-attr(makeSumOfDifferentSquaresFunction, "name") = c("Sum of Different Squares Function")
+attr(makeSumOfDifferentSquaresFunction, "name") = c("Sum of Different Squares")
 attr(makeSumOfDifferentSquaresFunction, "type") = c("single-objective")
-attr(makeSumOfDifferentSquaresFunction, "tags") = c("unimodal", "continuous", "scalable")
+attr(makeSumOfDifferentSquaresFunction, "tags") = c("single-objective", "unimodal", "continuous", "scalable")

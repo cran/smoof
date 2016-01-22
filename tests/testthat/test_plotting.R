@@ -4,14 +4,22 @@ test_that("autoplot functions for 1D numeric functions works as expected", {
 	fn = makeSingleObjectiveFunction(
 		name = "Test function",
 		fn = function(x) sum(x^2),
-		par.set = makeNumericParamSet("x", len = 1L, lower = -2, upper = 2)
+		par.set = makeNumericParamSet("x", len = 1L, lower = -2, upper = 2),
+    global.opt.value = 0,
+    global.opt.param = 0
 	)
 
 	library(ggplot2)
 	pl = autoplot(fn)
   plot(fn, show.optimum = TRUE, n.samples = 50L)
   checkGGPlot(pl, title = "Test function", "x", "y")
+
   pl = autoplot(fn, show.optimum = TRUE, n.samples = 50L)
+  checkGGPlot(pl, title = "Test function", "x", "y")
+
+  # Now check for wrapped functions
+  fn = addCountingWrapper(fn)
+  pl = autoplot(fn)
   checkGGPlot(pl, title = "Test function", "x", "y")
 })
 
@@ -100,19 +108,10 @@ test_that("3D plots work for two-dimensional funs", {
 })
 
 test_that("Pareto-optimal front can be approximately visualized in 2D", {
-	moo.fn = makeZDT1Function(dimensions = 3L)
-	expect_error(visualizeParetoOptimalFront(moo.fn))
+	soo.fn = makeSphereFunction(dimensions = 3L)
+	expect_error(visualizeParetoOptimalFront(soo.fn))
 	moo.fn = makeZDT1Function(dimensions = 2L)
-	for (show.only.front in c(TRUE, FALSE)) {
-		for (limits.by.front in c(TRUE, FALSE)) {
-			pl = visualizeParetoOptimalFront(
-				moo.fn,
-				show.only.front = show.only.front,
-				limits.by.front = limits.by.front
-			)
-			expect_is(pl, c("gg", "ggplot"))
-			expect_true(grepl("ZDT1", pl$labels$title))
-		}
-	}
-
+  pl = visualizeParetoOptimalFront(moo.fn)
+	expect_is(pl, c("gg", "ggplot"))
+	expect_true(grepl("ZDT1", pl$labels$title))
 })

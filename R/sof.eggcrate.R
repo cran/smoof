@@ -9,7 +9,9 @@
 makeEggCrateFunction = function() {
   makeSingleObjectiveFunction(
     name = "Egg Crate Function",
+    id = "eggCrate_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       x[1]^2 + x[2]^2 + 25 * (sin(x[1])^2 + sin(x[2])^2)
     },
     par.set = makeNumericParamSet(
@@ -26,6 +28,6 @@ makeEggCrateFunction = function() {
 }
 
 class(makeEggCrateFunction) = c("function", "smoof_generator")
-attr(makeEggCrateFunction, "name") = c("Egg Crate Function")
+attr(makeEggCrateFunction, "name") = c("Egg Crate")
 attr(makeEggCrateFunction, "type") = c("single-objective")
-attr(makeEggCrateFunction, "tags") = c("continuous", "separable", "non-scalable")
+attr(makeEggCrateFunction, "tags") = c("single-objective", "continuous", "separable", "non-scalable")

@@ -15,9 +15,12 @@
 #' @export
 makeRastriginFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Rastrigin Function", sep = ""),
+    id = paste0("rastrigin_", dimensions, "d"),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       n = length(x)
       10 * n + sum(x^2 - 10 * cos(2 * pi * x))
     },
@@ -35,6 +38,6 @@ makeRastriginFunction = function(dimensions) {
 }
 
 class(makeRastriginFunction) = c("function", "smoof_generator")
-attr(makeRastriginFunction, "name") = c("Rastrigin Function")
+attr(makeRastriginFunction, "name") = c("Rastrigin")
 attr(makeRastriginFunction, "type") = c("single-objective")
-attr(makeRastriginFunction, "tags") = c("multimodal", "continuous", "separable", "scalable")
+attr(makeRastriginFunction, "tags") = c("single-objective", "multimodal", "continuous", "separable", "scalable")

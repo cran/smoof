@@ -9,7 +9,9 @@
 makeBartelsConnFunction = function() {
   makeSingleObjectiveFunction(
     name = "Bartels Conn Function",
+    id = "bartelsConn_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       abs(x[1]^2 + x[2]^2 + x[1] * x[2]) + abs(sin(x[1])) + abs(cos(x[2]))
     },
     par.set = makeNumericParamSet(
@@ -26,6 +28,6 @@ makeBartelsConnFunction = function() {
 }
 
 class(makeBartelsConnFunction) = c("function", "smoof_generator")
-attr(makeBartelsConnFunction, "name") = c("Bartels Conn Function")
+attr(makeBartelsConnFunction, "name") = c("Bartels Conn")
 attr(makeBartelsConnFunction, "type") = c("single-objective")
-attr(makeBartelsConnFunction, "tags") = c("continuous", "non-differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeBartelsConnFunction, "tags") = c("single-objective", "continuous", "non-differentiable", "non-separable", "non-scalable", "multimodal")

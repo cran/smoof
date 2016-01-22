@@ -15,9 +15,12 @@
 #' @export
 makeRosenbrockFunction = function(dimensions) {
   assertCount(dimensions, na.ok = FALSE)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Rosenbrock Function", sep = ""),
+    id = paste0("rosenbrock_", dimensions, "d"),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       i = 1:(length(x) - 1L)
       sum(100 * (x[i]^2 - x[i + 1])^2 + (x[i] - 1)^2)
     },
@@ -35,6 +38,6 @@ makeRosenbrockFunction = function(dimensions) {
 }
 
 class(makeRosenbrockFunction) = c("function", "smoof_generator")
-attr(makeRosenbrockFunction, "name") = c("Rosenbrock Function")
+attr(makeRosenbrockFunction, "name") = c("Rosenbrock")
 attr(makeRosenbrockFunction, "type") = c("single-objective")
-attr(makeRosenbrockFunction, "tags") = c("continuous", "differentiable", "non-separable", "scalable", "multimodal")
+attr(makeRosenbrockFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal")

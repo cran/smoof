@@ -13,9 +13,12 @@
 #' @export
 makeExponentialFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Exponential Function", sep = ""),
+    id = paste0("exponential_", dimensions, "d"),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       -exp(-0.5 * sum(x^2))
     },
     par.set = makeNumericParamSet(
@@ -32,6 +35,6 @@ makeExponentialFunction = function(dimensions) {
 }
 
 class(makeExponentialFunction) = c("function", "smoof_generator")
-attr(makeExponentialFunction, "name") = c("Exponential Function")
+attr(makeExponentialFunction, "name") = c("Exponential")
 attr(makeExponentialFunction, "type") = c("single-objective")
-attr(makeExponentialFunction, "tags") = c("continuous", "differentiable", "non-separable", "scalable")
+attr(makeExponentialFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "scalable")

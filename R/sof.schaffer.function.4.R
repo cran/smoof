@@ -12,7 +12,9 @@
 makeSchafferN4Function = function() {
   makeSingleObjectiveFunction(
     name = "Schaffer Function N. 4",
+    id = "schaffer04_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = x[1]^2
       b = x[2]^2
       0.5 + (cos(sin(abs(a - b)))^2 - 0.5) / (1 + 0.001 * (a + b))^2
@@ -31,6 +33,6 @@ makeSchafferN4Function = function() {
 }
 
 class(makeSchafferN4Function) = c("function", "smoof_generator")
-attr(makeSchafferN4Function, "name") = c("Schaffer Function N. 4")
+attr(makeSchafferN4Function, "name") = c("Schaffer N. 4")
 attr(makeSchafferN4Function, "type") = c("single-objective")
-attr(makeSchafferN4Function, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")
+attr(makeSchafferN4Function, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

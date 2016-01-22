@@ -12,7 +12,9 @@
 makeFreudensteinRothFunction = function() {
   makeSingleObjectiveFunction(
     name = "Freudenstein Roth Function",
+    id = "freudensteinRoth_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       (x[1] - 13 + ((5 - x[2]) * x[2] - 2) * x[2])^2 + (x[1] - 29 + ((x[2] + 1) * x[2] - 14) * x[2])^2
     },
     par.set = makeNumericParamSet(
@@ -29,6 +31,6 @@ makeFreudensteinRothFunction = function() {
 }
 
 class(makeFreudensteinRothFunction) = c("function", "smoof_generator")
-attr(makeFreudensteinRothFunction, "name") = c("Freudenstein Roth Function")
+attr(makeFreudensteinRothFunction, "name") = c("Freudenstein Roth")
 attr(makeFreudensteinRothFunction, "type") = c("single-objective")
-attr(makeFreudensteinRothFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeFreudensteinRothFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

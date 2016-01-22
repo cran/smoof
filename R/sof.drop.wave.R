@@ -9,9 +9,12 @@
 #' @export
 makeGeneralizedDropWaveFunction = function(dimensions = 2L) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Generelized Drop-Wave Function", sep = ""),
+    id = paste0("generalizedDropWave_", dimensions, "d"),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       a = sum(x^2)
       -(1 + cos(12 * sqrt(a))) / (0.5 * a + 2)
     },
@@ -29,6 +32,6 @@ makeGeneralizedDropWaveFunction = function(dimensions = 2L) {
 }
 
 class(makeGeneralizedDropWaveFunction) = c("function", "smoof_generator")
-attr(makeGeneralizedDropWaveFunction, "name") = c("Generelized Drop-Wave Function")
+attr(makeGeneralizedDropWaveFunction, "name") = c("Generelized Drop-Wave")
 attr(makeGeneralizedDropWaveFunction, "type") = c("single-objective")
-attr(makeGeneralizedDropWaveFunction, "tags") = c("multimodal", "non-separable", "continuous", "differentiable", "scalable")
+attr(makeGeneralizedDropWaveFunction, "tags") = c("single-objective", "multimodal", "non-separable", "continuous", "differentiable", "scalable")

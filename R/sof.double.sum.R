@@ -12,9 +12,12 @@
 #' @export
 makeDoubleSumFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Double-Sum Function", sep = ""),
+    id = paste0("doubleSum_", dimensions, "d"),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       # this is faster than the soobench C implementation
       sum(cumsum(x)^2)
     },
@@ -32,6 +35,6 @@ makeDoubleSumFunction = function(dimensions) {
 }
 
 class(makeDoubleSumFunction) = c("function", "smoof_generator")
-attr(makeDoubleSumFunction, "name") = c("Double-Sum Function")
+attr(makeDoubleSumFunction, "name") = c("Double-Sum")
 attr(makeDoubleSumFunction, "type") = c("single-objective")
-attr(makeDoubleSumFunction, "tags") = c("convex", "unimodal", "differentiable", "separable", "scalable", "continuous")
+attr(makeDoubleSumFunction, "tags") = c("single-objective", "convex", "unimodal", "differentiable", "separable", "scalable", "continuous")

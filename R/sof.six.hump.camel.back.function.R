@@ -14,7 +14,9 @@
 makeSixHumpCamelFunction = function() {
   makeSingleObjectiveFunction(
     name = "Six-Hump Camel Back Function",
+    id = "sixHumpCamelBack_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       xx1 = x[1]^2
       xx2 = x[2]^2
       (4 - 2.1 * xx1 + xx1^2 / 3) * xx1 + x[1] * x[2] + (4 * xx2 - 4) * xx2
@@ -36,6 +38,6 @@ makeSixHumpCamelFunction = function() {
 }
 
 class(makeSixHumpCamelFunction) = c("function", "smoof_generator")
-attr(makeSixHumpCamelFunction, "name") = c("Six-Hump Camel Back Function")
+attr(makeSixHumpCamelFunction, "name") = c("Six-Hump Camel Back")
 attr(makeSixHumpCamelFunction, "type") = c("single-objective")
-attr(makeSixHumpCamelFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeSixHumpCamelFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

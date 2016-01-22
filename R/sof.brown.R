@@ -14,9 +14,12 @@
 #' @export
 makeBrownFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = "Brown Function",
+    id = "brown_2d",
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       i = 1:(length(x) - 1)
       a = x[i]^2
       b = x[i + 1]^2
@@ -36,6 +39,6 @@ makeBrownFunction = function(dimensions) {
 }
 
 class(makeBrownFunction) = c("function", "smoof_generator")
-attr(makeBrownFunction, "name") = c("Brown Function")
+attr(makeBrownFunction, "name") = c("Brown")
 attr(makeBrownFunction, "type") = c("single-objective")
-attr(makeBrownFunction, "tags") = c("continuous", "differentiable", "non-separable", "scalable", "unimodal")
+attr(makeBrownFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "unimodal")

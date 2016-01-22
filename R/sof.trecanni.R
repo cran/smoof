@@ -14,7 +14,9 @@
 makeTrecanniFunction = function() {
   makeSingleObjectiveFunction(
     name = "Trecanni Function",
+    id = "trecanni_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       x[1]^4 + 4 * (x[1]^3 + x[1]^2) + x[2]^2
     },
     par.set = makeNumericParamSet(
@@ -34,6 +36,6 @@ makeTrecanniFunction = function() {
 }
 
 class(makeTrecanniFunction) = c("function", "smoof_generator")
-attr(makeTrecanniFunction, "name") = c("Trecanni Function")
+attr(makeTrecanniFunction, "name") = c("Trecanni")
 attr(makeTrecanniFunction, "type") = c("single-objective")
-attr(makeTrecanniFunction, "tags") = c("continuous", "differentiable", "separable", "non-scalable", "unimodal")
+attr(makeTrecanniFunction, "tags") = c("single-objective", "continuous", "differentiable", "separable", "non-scalable", "unimodal")

@@ -11,7 +11,9 @@
 makeHimmelblauFunction = function() {
   makeSingleObjectiveFunction(
     name = "Himmelblau Function",
+    id = "himmelblau_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       (x[1]^2 + x[2] - 11)^2 + (x[1] + x[2]^2 - 7)^2
     },
     par.set = makeNumericParamSet(
@@ -28,6 +30,6 @@ makeHimmelblauFunction = function() {
 }
 
 class(makeHimmelblauFunction) = c("function", "smoof_generator")
-attr(makeHimmelblauFunction, "name") = c("Himmelblau Function")
+attr(makeHimmelblauFunction, "name") = c("Himmelblau")
 attr(makeHimmelblauFunction, "type") = c("single-objective")
-attr(makeHimmelblauFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeHimmelblauFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

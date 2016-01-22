@@ -51,7 +51,7 @@ makeDTLZ7Function = function(dimensions, n.objectives) {
 
   # C++ implementation
   fn = function(x) {
-    stopifnot(length(x) == dimensions)
+    assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
     dtlz_7(x, M)
   }
 
@@ -70,6 +70,7 @@ makeDTLZ7Function = function(dimensions, n.objectives) {
 
   makeMultiObjectiveFunction(
     name = "DTLZ7 Function",
+    id = paste0("dtlz7_", dimensions, "d_", n.objectives, "o"),
     description = "Deb et al.",
     fn = fn,
     par.set =  makeNumericParamSet(
@@ -84,6 +85,6 @@ makeDTLZ7Function = function(dimensions, n.objectives) {
 }
 
 class(makeDTLZ7Function) = c("function", "smoof_generator")
-attr(makeDTLZ7Function, "name") = c("DTLZ7 Function")
+attr(makeDTLZ7Function, "name") = c("DTLZ7")
 attr(makeDTLZ7Function, "type") = c("multi-objective")
-attr(makeDTLZ7Function, "tags") = c()
+attr(makeDTLZ7Function, "tags") = c("multi-objective")

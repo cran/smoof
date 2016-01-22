@@ -23,7 +23,7 @@ makeZDT2Function = function(dimensions) {
 
     # define the two-objective ZDT1 function
   fn = function(x) {
-    stopifnot(length(x) == dimensions)
+    assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
     n = length(x)
     f1 = x[1]
     g = 1 + 9 * sum(x[2:n]) / (n - 1)
@@ -34,6 +34,7 @@ makeZDT2Function = function(dimensions) {
 
   makeMultiObjectiveFunction(
     name = "ZDT2 Function",
+    id = paste0("zdt2_", dimensions, "d_2o"),
     description = "Zitzler et al. function N. 2",
     fn = fn,
     par.set =  makeNumericParamSet(
@@ -48,6 +49,6 @@ makeZDT2Function = function(dimensions) {
 }
 
 class(makeZDT2Function) = c("function", "smoof_generator")
-attr(makeZDT2Function, "name") = c("ZDT2 Function")
+attr(makeZDT2Function, "name") = c("ZDT2")
 attr(makeZDT2Function, "type") = c("multi-objective")
-attr(makeZDT2Function, "tags") = c()
+attr(makeZDT2Function, "tags") = c("multi-objective")

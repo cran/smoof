@@ -13,9 +13,12 @@
 #' @export
 makeSphereFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Sphere Function", sep = ""),
+    id = paste0("sphere_", dimensions, "d"),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       sum(x^2)
     },
     par.set = makeNumericParamSet(
@@ -32,6 +35,6 @@ makeSphereFunction = function(dimensions) {
 }
 
 class(makeSphereFunction) = c("function", "smoof_generator")
-attr(makeSphereFunction, "name") = c("Sphere Function")
+attr(makeSphereFunction, "name") = c("Sphere")
 attr(makeSphereFunction, "type") = c("single-objective")
-attr(makeSphereFunction, "tags") = c("unimodal", "separable", "convex", "continuous", "differentiable", "scalable")
+attr(makeSphereFunction, "tags") = c("single-objective", "unimodal", "separable", "convex", "continuous", "differentiable", "scalable")

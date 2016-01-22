@@ -15,7 +15,9 @@
 makeHolderTableN1Function = function() {
   makeSingleObjectiveFunction(
     name = "Holder Table Function N. 1",
+    id = "holderTable01_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       -abs(cos(x[1]) * cos(x[2]) * exp(abs(1 - sqrt(x[1]^2 + x[2]^2) / 3.1415)))
     },
     par.set = makeNumericParamSet(
@@ -37,6 +39,6 @@ makeHolderTableN1Function = function() {
 }
 
 class(makeHolderTableN1Function) = c("function", "smoof_generator")
-attr(makeHolderTableN1Function, "name") = c("Holder Table Function N. 1")
+attr(makeHolderTableN1Function, "name") = c("Holder Table N. 1")
 attr(makeHolderTableN1Function, "type") = c("single-objective")
-attr(makeHolderTableN1Function, "tags") = c("continuous", "differentiable", "separable", "non-scalable", "multimodal")
+attr(makeHolderTableN1Function, "tags") = c("single-objective", "continuous", "differentiable", "separable", "non-scalable", "multimodal")

@@ -13,9 +13,12 @@
 #' @export
 makePowellSumFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Powell-Sum Function", sep = ""),
+    id = paste0("powellSum", dimensions, "d"),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       a = (1:length(x)) + 1L
       sum(abs(x)^a)
     },
@@ -33,6 +36,6 @@ makePowellSumFunction = function(dimensions) {
 }
 
 class(makePowellSumFunction) = c("function", "smoof_generator")
-attr(makePowellSumFunction, "name") = c("Double-Sum Function")
+attr(makePowellSumFunction, "name") = c("Double-Sum")
 attr(makePowellSumFunction, "type") = c("single-objective")
-attr(makePowellSumFunction, "tags") = c("continuous", "differentiable", "separable", "scalable", "unimodal")
+attr(makePowellSumFunction, "tags") = c("single-objective", "continuous", "differentiable", "separable", "scalable", "unimodal")

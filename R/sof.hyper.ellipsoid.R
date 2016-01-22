@@ -8,9 +8,12 @@
 #' @export
 makeHyperEllipsoidFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Hyper-Ellipsoid function", sep = ""),
+    id = paste0("hyperEllipsoid_", dimensions, "d"),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       #FIXME: check if this is correct. http://www.geocities.ws/eadorio/mvf.pdf has another definiton
       n = length(x)
       sum(1:n * x^2)
@@ -29,6 +32,6 @@ makeHyperEllipsoidFunction = function(dimensions) {
 }
 
 class(makeHyperEllipsoidFunction) = c("function", "smoof_generator")
-attr(makeHyperEllipsoidFunction, "name") = c("Hyper-Ellipsoid Function")
+attr(makeHyperEllipsoidFunction, "name") = c("Hyper-Ellipsoid")
 attr(makeHyperEllipsoidFunction, "type") = c("single-objective")
-attr(makeHyperEllipsoidFunction, "tags") = c("unimodal", "convex", "continuous", "scalable")
+attr(makeHyperEllipsoidFunction, "tags") = c("single-objective", "unimodal", "convex", "continuous", "scalable")

@@ -13,7 +13,9 @@
 makeAdjimanFunction = function() {
   makeSingleObjectiveFunction(
     name = "Adjiman Function",
+    id = "adjiman_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       cos(x[1]) * sin(x[2]) - x[1] / (x[2]^2 + 1)
     },
     par.set = makeNumericParamSet(
@@ -30,6 +32,6 @@ makeAdjimanFunction = function() {
 }
 
 class(makeAdjimanFunction) = c("function", "smoof_generator")
-attr(makeAdjimanFunction, "name") = c("Adjiman Function")
+attr(makeAdjimanFunction, "name") = c("Adjiman")
 attr(makeAdjimanFunction, "type") = c("single-objective")
-attr(makeAdjimanFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeAdjimanFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

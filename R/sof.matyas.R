@@ -11,7 +11,9 @@
 makeMatyasFunction = function() {
   makeSingleObjectiveFunction(
     name = "Matyas Function",
+    id = "matyas_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       0.26 * (x[1]^2 + x[2]^2) - 0.48 * x[1] * x[2]
     },
     par.set = makeNumericParamSet(
@@ -28,6 +30,6 @@ makeMatyasFunction = function() {
 }
 
 class(makeMatyasFunction) = c("function", "smoof_generator")
-attr(makeMatyasFunction, "name") = c("Matyas Function")
+attr(makeMatyasFunction, "name") = c("Matyas")
 attr(makeMatyasFunction, "type") = c("single-objective")
-attr(makeMatyasFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")
+attr(makeMatyasFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

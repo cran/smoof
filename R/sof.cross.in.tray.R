@@ -13,7 +13,9 @@
 makeCrossInTrayFunction = function() {
   makeSingleObjectiveFunction(
     name = "Cross-In-Tray Function",
+    id = "crossInTray_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = exp(abs(100 - (sqrt(x[1]^2 + x[2]^2) / pi)))
       -0.0001 * (abs(a * sin(x[1]) * sin(x[2])) + 1)^(0.1)
     },
@@ -36,6 +38,6 @@ makeCrossInTrayFunction = function() {
 }
 
 class(makeCrossInTrayFunction) = c("function", "smoof_generator")
-attr(makeCrossInTrayFunction, "name") = c("Cross-In-Tray Function")
+attr(makeCrossInTrayFunction, "name") = c("Cross-In-Tray")
 attr(makeCrossInTrayFunction, "type") = c("single-objective")
-attr(makeCrossInTrayFunction, "tags") = c("continuous", "non-separable", "non-scalable", "multimodal")
+attr(makeCrossInTrayFunction, "tags") = c("single-objective", "continuous", "non-separable", "non-scalable", "multimodal")

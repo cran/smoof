@@ -12,7 +12,9 @@
 makeHansenFunction = function() {
   makeSingleObjectiveFunction(
     name = "Hansen Function",
+    id = "hansen_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       i = j = 0:4
       a = sum((i + 1) * cos(i * x[1] + i + 1))
       b = sum((j + 1) * cos((j + 2) * x[2] + j + 1))
@@ -41,6 +43,6 @@ makeHansenFunction = function() {
 }
 
 class(makeHansenFunction) = c("function", "smoof_generator")
-attr(makeHansenFunction, "name") = c("Hansen Function")
+attr(makeHansenFunction, "name") = c("Hansen")
 attr(makeHansenFunction, "type") = c("single-objective")
-attr(makeHansenFunction, "tags") = c("continuous", "differentiable", "separable", "non-scalable", "multimodal")
+attr(makeHansenFunction, "tags") = c("single-objective", "continuous", "differentiable", "separable", "non-scalable", "multimodal")

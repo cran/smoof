@@ -11,7 +11,9 @@
 makeKearfottFunction = function() {
   makeSingleObjectiveFunction(
     name = "Kearfott Function",
+    id = "kearfott_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       (x[1]^2 + x[2]^2 - 2)^2 + (x[1]^2 - x[2]^2 - 1)^2
     },
     par.set = makeNumericParamSet(
@@ -33,6 +35,6 @@ makeKearfottFunction = function() {
 }
 
 class(makeKearfottFunction) = c("function", "smoof_generator")
-attr(makeKearfottFunction, "name") = c("Kearfott Function")
+attr(makeKearfottFunction, "name") = c("Kearfott")
 attr(makeKearfottFunction, "type") = c("single-objective")
-attr(makeKearfottFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeKearfottFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

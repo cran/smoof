@@ -14,9 +14,12 @@
 #' @export
 makeBohachevskyN1Function = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Bohachevsky Function N. 1", sep = ""),
+    id = paste0("bohachevsky01_", dimensions, "d"),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       i = 1:(length(x) - 1)
       sum(x[i]^2 + 2 * x[i + 1]^2 - 0.3 * cos(3 * pi * x[i]) - 0.4 * cos(4 * pi * x[i + 1]) + 0.7)
     },
@@ -34,6 +37,6 @@ makeBohachevskyN1Function = function(dimensions) {
 }
 
 class(makeBohachevskyN1Function) = c("function", "smoof_generator")
-attr(makeBohachevskyN1Function, "name") = c("Bohachevsky Function")
+attr(makeBohachevskyN1Function, "name") = c("Bohachevsky N. 1")
 attr(makeBohachevskyN1Function, "type") = c("single-objective")
-attr(makeBohachevskyN1Function, "tags") = c("continuous", "differentiable", "separable", "scalable", "multimodal")
+attr(makeBohachevskyN1Function, "tags") = c("single-objective", "continuous", "differentiable", "separable", "scalable", "multimodal")

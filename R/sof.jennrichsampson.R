@@ -11,7 +11,9 @@
 makeJennrichSampsonFunction = function() {
   makeSingleObjectiveFunction(
     name = "Jennrich-Sampson Function",
+    id = "jennrichSampson_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       i = 1:10
       sum((2 + 2 * i - (exp(i * x[1]) + exp(i * x[2])))^2)
     },
@@ -29,6 +31,6 @@ makeJennrichSampsonFunction = function() {
 }
 
 class(makeJennrichSampsonFunction) = c("function", "smoof_generator")
-attr(makeJennrichSampsonFunction, "name") = c("Jennrich-Sampson Function")
+attr(makeJennrichSampsonFunction, "name") = c("Jennrich-Sampson")
 attr(makeJennrichSampsonFunction, "type") = c("single-objective")
-attr(makeJennrichSampsonFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")
+attr(makeJennrichSampsonFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

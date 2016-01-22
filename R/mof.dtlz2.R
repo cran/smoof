@@ -47,13 +47,13 @@ makeDTLZ2Function = function(dimensions, n.objectives) {
 
   # C++ implementation
   fn = function(x) {
-    stopifnot(length(x) == dimensions)
+    assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
     dtlz_2(x, M)
   }
 
   # Reference R implementation
   # fn = function(x) {
-  #   stopifnot(length(x) == dimensions)
+  #   assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
   #   f = numeric(M)
   #   n = length(x)
   #   xm = x[M:n]
@@ -70,6 +70,7 @@ makeDTLZ2Function = function(dimensions, n.objectives) {
 
   makeMultiObjectiveFunction(
     name = "DTLZ2 Function",
+    id = paste0("dtlz2_", dimensions, "d_", n.objectives, "o"),
     description = "Deb et al.",
     fn = fn,
     par.set =  makeNumericParamSet(
@@ -84,6 +85,6 @@ makeDTLZ2Function = function(dimensions, n.objectives) {
 }
 
 class(makeDTLZ2Function) = c("function", "smoof_generator")
-attr(makeDTLZ2Function, "name") = c("DTLZ2 Function")
+attr(makeDTLZ2Function, "name") = c("DTLZ2")
 attr(makeDTLZ2Function, "type") = c("multi-objective")
-attr(makeDTLZ2Function, "tags") = c()
+attr(makeDTLZ2Function, "tags") = c("multi-objective")

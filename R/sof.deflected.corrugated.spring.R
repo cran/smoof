@@ -23,10 +23,14 @@ makeDeflectedCorrugatedSpringFunction = function(dimensions, K = 5, alpha = 5) {
 
   force(K)
   force(alpha)
+  force(dimensions)
 
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Deflected Corrugated Spring function", sep = ""),
+    #FIXME: eventually encode K and alpha in fun?
+    id = paste0("deflectedCorrugatedSpring_", dimensions, "d_K", K, "alpha", alpha),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       a = (x - alpha)^2
       sa = sum(a)
       0.1 * sa - cos(K * sqrt(sa))
@@ -45,6 +49,6 @@ makeDeflectedCorrugatedSpringFunction = function(dimensions, K = 5, alpha = 5) {
 }
 
 class(makeDeflectedCorrugatedSpringFunction) = c("function", "smoof_generator")
-attr(makeDeflectedCorrugatedSpringFunction, "name") = c("Deflected Corrugated Spring Function")
+attr(makeDeflectedCorrugatedSpringFunction, "name") = c("Deflected Corrugated Spring")
 attr(makeDeflectedCorrugatedSpringFunction, "type") = c("single-objective")
-attr(makeDeflectedCorrugatedSpringFunction, "tags") = c("continuous", "differentiable", "non-separable", "scalable", "multimodal")
+attr(makeDeflectedCorrugatedSpringFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal")

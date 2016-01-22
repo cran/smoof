@@ -13,7 +13,9 @@
 makeDeckkersAartsFunction = function() {
   makeSingleObjectiveFunction(
     name = "Deckkers-Aarts Function",
+    id = "deckkersAarts_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = x[1]^2
       b = x[2]^2
       1e+05 * a + b - (a + b)^2 + 1e-05 * (a + b)^4
@@ -35,6 +37,6 @@ makeDeckkersAartsFunction = function() {
 }
 
 class(makeDeckkersAartsFunction) = c("function", "smoof_generator")
-attr(makeDeckkersAartsFunction, "name") = c("Deckkers-Aarts Function")
+attr(makeDeckkersAartsFunction, "name") = c("Deckkers-Aarts")
 attr(makeDeckkersAartsFunction, "type") = c("single-objective")
-attr(makeDeckkersAartsFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeDeckkersAartsFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

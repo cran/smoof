@@ -13,7 +13,9 @@
 makeBrentFunction = function() {
   makeSingleObjectiveFunction(
     name = "Brent Function",
+    id = "brent_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       (x[1] + 10)^2 + (x[2] + 10)^2 + exp(-x[1]^2 - x[2]^2)
     },
     par.set = makeNumericParamSet(
@@ -30,6 +32,6 @@ makeBrentFunction = function() {
 }
 
 class(makeBrentFunction) = c("function", "smoof_generator")
-attr(makeBrentFunction, "name") = c("Brent Function")
+attr(makeBrentFunction, "name") = c("Brent")
 attr(makeBrentFunction, "type") = c("single-objective")
-attr(makeBrentFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")
+attr(makeBrentFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

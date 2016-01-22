@@ -11,7 +11,9 @@
 makeEngvallFunction = function() {
   makeSingleObjectiveFunction(
     name = "Engvall Function",
+    id = "engvall_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       x[1]^4 + x[2]^4 + 2 * x[1]^2 * x[2]^2 - 4 * x[1] + 3
     },
     par.set = makeNumericParamSet(
@@ -28,6 +30,6 @@ makeEngvallFunction = function() {
 }
 
 class(makeEngvallFunction) = c("function", "smoof_generator")
-attr(makeEngvallFunction, "name") = c("Engvall Function")
+attr(makeEngvallFunction, "name") = c("Engvall")
 attr(makeEngvallFunction, "type") = c("single-objective")
-attr(makeEngvallFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")
+attr(makeEngvallFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

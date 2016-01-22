@@ -20,7 +20,9 @@
 makeBraninFunction = function() {
   makeSingleObjectiveFunction(
     name = "Branin RCOS Function",
+    id = "branin_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = 1
       b = 5.1 / (4 * pi^2)
       c = 5 / pi
@@ -45,6 +47,6 @@ makeBraninFunction = function() {
 }
 
 class(makeBraninFunction) = c("function", "smoof_generator")
-attr(makeBraninFunction, "name") = c("Branin Function")
+attr(makeBraninFunction, "name") = c("BraninRCOS")
 attr(makeBraninFunction, "type") = c("single-objective")
-attr(makeBraninFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeBraninFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

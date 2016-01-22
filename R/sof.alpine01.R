@@ -13,9 +13,12 @@
 #' @export
 makeAlpine01Function = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Alpine01 Function", sep = ""),
+    id = paste0("alpine01_", dimensions, "d"),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       sum(abs(x * sin(x) + 0.1 * x))
     },
     par.set = makeNumericParamSet(
@@ -32,6 +35,6 @@ makeAlpine01Function = function(dimensions) {
 }
 
 class(makeAlpine01Function) = c("function", "smoof_generator")
-attr(makeAlpine01Function, "name") = c("Alpine01 Function")
+attr(makeAlpine01Function, "name") = c("Alpine N. 1")
 attr(makeAlpine01Function, "type") = c("single-objective")
-attr(makeAlpine01Function, "tags") = c("continuous", "non-differentiable", "separable", "scalable", "multimodal")
+attr(makeAlpine01Function, "tags") = c("single-objective", "continuous", "non-differentiable", "separable", "scalable", "multimodal")

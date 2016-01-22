@@ -13,7 +13,9 @@
 makeStyblinkskiTangFunction = function() {
   makeSingleObjectiveFunction(
     name = "Styblinkski-Tang Function",
+    id = "styblinskiTang_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = x^2
       b = a^2
       return(0.5 * sum(b - 16 * a + 5 * x))
@@ -32,6 +34,6 @@ makeStyblinkskiTangFunction = function() {
 }
 
 class(makeStyblinkskiTangFunction) = c("function", "smoof_generator")
-attr(makeStyblinkskiTangFunction, "name") = c("Styblinkski-Tang Function")
+attr(makeStyblinkskiTangFunction, "name") = c("Styblinkski-Tang")
 attr(makeStyblinkskiTangFunction, "type") = c("single-objective")
-attr(makeStyblinkskiTangFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeStyblinkskiTangFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

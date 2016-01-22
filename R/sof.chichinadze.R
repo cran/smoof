@@ -9,7 +9,9 @@
 makeChichinadzeFunction = function() {
   makeSingleObjectiveFunction(
     name = "Chichinadze Function",
+    id = "chichinadze_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       x[1]^2 - 12 * x[1] + 11 + 10 * cos(pi * 0.5 * x[1]) + 8 * sin(5 * pi * x[1]) - exp(-0.5 * (x[2] - 0.5)^2) / sqrt(5)
     },
     par.set = makeNumericParamSet(
@@ -26,6 +28,6 @@ makeChichinadzeFunction = function() {
 }
 
 class(makeChichinadzeFunction) = c("function", "smoof_generator")
-attr(makeChichinadzeFunction, "name") = c("Chichinadze Function")
+attr(makeChichinadzeFunction, "name") = c("Chichinadze")
 attr(makeChichinadzeFunction, "type") = c("single-objective")
-attr(makeChichinadzeFunction, "tags") = c("continuous", "differentiable", "separable", "non-scalable", "multimodal")
+attr(makeChichinadzeFunction, "tags") = c("single-objective", "continuous", "differentiable", "separable", "non-scalable", "multimodal")

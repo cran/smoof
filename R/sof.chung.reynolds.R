@@ -13,9 +13,12 @@
 #' @export
 makeChungReynoldsFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Chung Reynolds Function", sep = ""),
+    id = paste0("chungReynolds", dimensions, "d"),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       sum(x^2)^2
     },
     par.set = makeNumericParamSet(
@@ -32,6 +35,6 @@ makeChungReynoldsFunction = function(dimensions) {
 }
 
 class(makeChungReynoldsFunction) = c("function", "smoof_generator")
-attr(makeChungReynoldsFunction, "name") = c("Chung Reynolds Function")
+attr(makeChungReynoldsFunction, "name") = c("Chung Reynolds")
 attr(makeChungReynoldsFunction, "type") = c("single-objective")
-attr(makeChungReynoldsFunction, "tags") = c("unimodal", "continuous", "differentiable", "scalable")
+attr(makeChungReynoldsFunction, "tags") = c("single-objective", "unimodal", "continuous", "differentiable", "scalable")

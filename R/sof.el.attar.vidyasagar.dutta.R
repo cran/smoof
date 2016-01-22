@@ -13,7 +13,9 @@
 makeElAttarVidyasagarDuttaFunction = function() {
   makeSingleObjectiveFunction(
     name = "El-Attar-Vidyasagar-Dutta Function",
+    id = "elAttarVidyasagarDutta_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       (x[1]^2 + x[2] - 10)^2 + (x[1] + x[2]^2 - 7)^2 + (x[1]^2 + x[2]^3 - 1)^2
     },
     par.set = makeNumericParamSet(
@@ -30,6 +32,6 @@ makeElAttarVidyasagarDuttaFunction = function() {
 }
 
 class(makeElAttarVidyasagarDuttaFunction) = c("function", "smoof_generator")
-attr(makeElAttarVidyasagarDuttaFunction, "name") = c("El-Attar-Vidyasagar-Dutta Function")
+attr(makeElAttarVidyasagarDuttaFunction, "name") = c("El-Attar-Vidyasagar-Dutta")
 attr(makeElAttarVidyasagarDuttaFunction, "type") = c("single-objective")
-attr(makeElAttarVidyasagarDuttaFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")
+attr(makeElAttarVidyasagarDuttaFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

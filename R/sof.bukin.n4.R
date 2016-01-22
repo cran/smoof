@@ -14,7 +14,9 @@
 makeBukinN4Function = function() {
   makeSingleObjectiveFunction(
     name = "Bukin Function N. 4",
+    id = "bukin04_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       100 * x[2]^2 + 0.01 * abs(x[1] + 10)
     },
     par.set = makeNumericParamSet(
@@ -31,6 +33,6 @@ makeBukinN4Function = function() {
 }
 
 class(makeBukinN4Function) = c("function", "smoof_generator")
-attr(makeBukinN4Function, "name") = c("Bukin Function N. 4")
+attr(makeBukinN4Function, "name") = c("Bukin N. 4")
 attr(makeBukinN4Function, "type") = c("single-objective")
-attr(makeBukinN4Function, "tags") = c("continuous", "non-differentiable", "separable", "non-scalable", "multimodal")
+attr(makeBukinN4Function, "tags") = c("single-objective", "continuous", "non-differentiable", "separable", "non-scalable", "multimodal")

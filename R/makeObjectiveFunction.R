@@ -32,6 +32,7 @@
 # @return [\code{function}] Target function with additional stuff attached as attributes.
 makeObjectiveFunction = function(
   name,
+  id = NULL,
   description = NULL,
   fn,
   has.simple.signature = TRUE,
@@ -43,9 +44,12 @@ makeObjectiveFunction = function(
   constraint.fn = NULL) {
 
   # sanity checks
-  assertCharacter(name, len = 1L, any.missing = FALSE)
+  assertString(name, na.ok = FALSE)
+  if (!is.null(id))
+    assertString(id, na.ok = FALSE)
 
-  is.null(description) || assertCharacter(description, len = 1L, any.missing = FALSE)
+  if (!is.null(description))
+    assertString(description, na.ok = FALSE)
   assertFunction(fn)
   assertFlag(has.simple.signature, na.ok = FALSE)
 
@@ -70,7 +74,8 @@ makeObjectiveFunction = function(
   structure(
     fn,
     name = name,
-    description = if (!is.null(description)) description else "",
+    id = coalesce(id, NA),
+    description = coalesce(description, ""),
     par.set = par.set,
     noisy = noisy,
     minimize = minimize,

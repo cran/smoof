@@ -9,7 +9,9 @@
 makeBoothFunction = function() {
   makeSingleObjectiveFunction(
     name = "Booth Function",
+    id = "booth_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       (x[1] + 2 * x[2] - 7)^2 + (2 * x[1] + x[2] - 5)^2
     },
     par.set = makeNumericParamSet(
@@ -26,6 +28,6 @@ makeBoothFunction = function() {
 }
 
 class(makeBoothFunction) = c("function", "smoof_generator")
-attr(makeBoothFunction, "name") = c("Booth Function")
+attr(makeBoothFunction, "name") = c("Booth")
 attr(makeBoothFunction, "type") = c("single-objective")
-attr(makeBoothFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")
+attr(makeBoothFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

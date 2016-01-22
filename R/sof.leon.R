@@ -12,7 +12,9 @@
 makeLeonFunction = function() {
   makeSingleObjectiveFunction(
     name = "Leon Function",
+    id = "leon_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       100 * (x[2] - x[1]^2)^2 + (1 - x[1])^2
     },
     par.set = makeNumericParamSet(
@@ -29,6 +31,6 @@ makeLeonFunction = function() {
 }
 
 class(makeLeonFunction) = c("function", "smoof_generator")
-attr(makeLeonFunction, "name") = c("Leon Function")
+attr(makeLeonFunction, "name") = c("Leon")
 attr(makeLeonFunction, "type") = c("single-objective")
-attr(makeLeonFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")
+attr(makeLeonFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

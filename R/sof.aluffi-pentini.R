@@ -13,7 +13,9 @@
 makeAluffiPentiniFunction = function() {
   makeSingleObjectiveFunction(
     name = "Aluffi-Pentini Function",
+    id = "allufiPentini_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       0.25 * x[1]^4 - 0.5 * x[1]^2 + 0.1 * x[1] + 0.5 * x[2]^2
     },
     par.set = makeNumericParamSet(
@@ -30,6 +32,6 @@ makeAluffiPentiniFunction = function() {
 }
 
 class(makeAluffiPentiniFunction) = c("function", "smoof_generator")
-attr(makeAluffiPentiniFunction, "name") = c("Aluffi-Pentini Function")
+attr(makeAluffiPentiniFunction, "name") = c("Aluffi-Pentini")
 attr(makeAluffiPentiniFunction, "type") = c("single-objective")
-attr(makeAluffiPentiniFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")
+attr(makeAluffiPentiniFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

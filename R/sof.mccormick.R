@@ -12,7 +12,9 @@
 makeMcCormickFunction = function() {
   makeSingleObjectiveFunction(
     name = "McCormick Function",
+    id = "mccormick_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       sin(x[1] + x[2]) + (x[1] - x[2])^2 - 1.5 * x[1] + 2.5 * x[2] + 1
     },
     par.set = makeNumericParamSet(
@@ -29,6 +31,6 @@ makeMcCormickFunction = function() {
 }
 
 class(makeMcCormickFunction) = c("function", "smoof_generator")
-attr(makeMcCormickFunction, "name") = c("McCormick Function")
+attr(makeMcCormickFunction, "name") = c("McCormick")
 attr(makeMcCormickFunction, "type") = c("single-objective")
-attr(makeMcCormickFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeMcCormickFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

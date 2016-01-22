@@ -14,7 +14,9 @@
 makeEasomFunction = function() {
   makeSingleObjectiveFunction(
     name = "Easom Function",
+    id = paste0("easom_2d"),
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       -cos(x[1]) * cos(x[2]) * exp(-((x[1] - pi)^2 + (x[2] - pi)^2))
     },
     par.set = makeNumericParamSet(
@@ -31,6 +33,6 @@ makeEasomFunction = function() {
 }
 
 class(makeEasomFunction) = c("function", "smoof_generator")
-attr(makeEasomFunction, "name") = c("Eason Function")
+attr(makeEasomFunction, "name") = c("Eason")
 attr(makeEasomFunction, "type") = c("single-objective")
-attr(makeEasomFunction, "tags") = c("continuous", "differentiable", "separable", "non-scalable", "multimodal")
+attr(makeEasomFunction, "tags") = c("single-objective", "continuous", "differentiable", "separable", "non-scalable", "multimodal")

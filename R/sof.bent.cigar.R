@@ -14,7 +14,9 @@ makeBentCigarFunction = function(dimensions) {
   force(dimensions)
   makeSingleObjectiveFunction(
     name = "Bent-Cigar Function",
+    id = "bentCigar_2d",
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       x[1]^2 + 1e+06 * sum(x[2:dimensions]^2)
     },
     par.set = makeNumericParamSet(
@@ -31,6 +33,6 @@ makeBentCigarFunction = function(dimensions) {
 }
 
 class(makeBentCigarFunction) = c("function", "smoof_generator")
-attr(makeBentCigarFunction, "name") = c("Bent-Cigar Function")
+attr(makeBentCigarFunction, "name") = c("Bent-Cigar")
 attr(makeBentCigarFunction, "type") = c("single-objective")
-attr(makeBentCigarFunction, "tags") = c("continuous", "differentiable", "non-separable", "scalable", "unimodal")
+attr(makeBentCigarFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "unimodal")

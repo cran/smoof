@@ -13,7 +13,9 @@
 makeThreeHumpCamelFunction = function() {
   makeSingleObjectiveFunction(
     name = "Three-Hump Camel Function",
+    id = "threeHumpCamel_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       2 * x[1]^2 - 1.05 * x[1]^4 + (x[1]^6) / 6 + x[1] * x[2] + x[2]^2
     },
     par.set = makeNumericParamSet(
@@ -30,6 +32,6 @@ makeThreeHumpCamelFunction = function() {
 }
 
 class(makeThreeHumpCamelFunction) = c("function", "smoof_generator")
-attr(makeThreeHumpCamelFunction, "name") = c("Three-Hump Camel Function")
+attr(makeThreeHumpCamelFunction, "name") = c("Three-Hump Camel")
 attr(makeThreeHumpCamelFunction, "type") = c("single-objective")
-attr(makeThreeHumpCamelFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeThreeHumpCamelFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

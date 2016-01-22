@@ -12,7 +12,9 @@
 makeShubertFunction = function() {
   makeSingleObjectiveFunction(
     name = "Shubert Function",
+    id = "shubert_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       j = 1:5
       a = sum(j * cos((j + 1) * x[1] + j))
       b = sum(j * cos((j + 1) * x[2] + j))
@@ -50,6 +52,6 @@ makeShubertFunction = function() {
 }
 
 class(makeShubertFunction) = c("function", "smoof_generator")
-attr(makeShubertFunction, "name") = c("Shubert function")
+attr(makeShubertFunction, "name") = c("Shubert")
 attr(makeShubertFunction, "type") = c("single-objective")
-attr(makeShubertFunction, "tags") = c("continuous", "differentiable", "non-scalable", "multimodal")
+attr(makeShubertFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-scalable", "multimodal")

@@ -14,7 +14,9 @@
 makePeriodicFunction = function() {
   makeSingleObjectiveFunction(
     name = "Periodic Function",
+    id = "periodic_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       1 + sin(x[1])^2 + sin(x[2])^2 - 0.1 * exp(-x[1]^2 - x[2]^2)
     },
     par.set = makeNumericParamSet(
@@ -31,6 +33,6 @@ makePeriodicFunction = function() {
 }
 
 class(makePeriodicFunction) = c("function", "smoof_generator")
-attr(makePeriodicFunction, "name") = c("Periodic Function")
+attr(makePeriodicFunction, "name") = c("Periodic")
 attr(makePeriodicFunction, "type") = c("single-objective")
-attr(makePeriodicFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makePeriodicFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

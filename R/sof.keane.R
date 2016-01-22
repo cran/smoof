@@ -10,7 +10,9 @@
 makeKeaneFunction = function() {
   makeSingleObjectiveFunction(
     name = "Keane Function",
+    id = "keane_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = sin(x[1] - x[2])^2 * sin(x[1] + x[2])^2
       b = sqrt(x[1]^2 + x[2]^2)
       return (a / b)
@@ -33,6 +35,6 @@ makeKeaneFunction = function() {
 }
 
 class(makeKeaneFunction) = c("function", "smoof_generator")
-attr(makeKeaneFunction, "name") = c("Keane Function")
+attr(makeKeaneFunction, "name") = c("Keane")
 attr(makeKeaneFunction, "type") = c("single-objective")
-attr(makeKeaneFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeKeaneFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

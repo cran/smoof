@@ -12,7 +12,9 @@
 makeCubeFunction = function() {
   makeSingleObjectiveFunction(
     name = "Cube Function",
+    id = "cube_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       100 * (x[2] - x[1]^3)^2 + (1 - x[1])^2
     },
     par.set = makeNumericParamSet(
@@ -29,6 +31,6 @@ makeCubeFunction = function() {
 }
 
 class(makeCubeFunction) = c("function", "smoof_generator")
-attr(makeCubeFunction, "name") = c("Cube Function")
+attr(makeCubeFunction, "name") = c("Cube")
 attr(makeCubeFunction, "type") = c("single-objective")
-attr(makeCubeFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")
+attr(makeCubeFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

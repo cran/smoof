@@ -14,9 +14,12 @@
 #' @export
 makeGriewankFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Griewank Function", sep = ""),
+    id = paste0("griewank_", dimensions, "d"),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       a = sum(x^2) / 4000
       b = prod(cos(x / sqrt(1:length(x))))
       return(a - b + 1)
@@ -35,6 +38,6 @@ makeGriewankFunction = function(dimensions) {
 }
 
 class(makeGriewankFunction) = c("function", "smoof_generator")
-attr(makeGriewankFunction, "name") = c("Griewank Function")
+attr(makeGriewankFunction, "name") = c("Griewank")
 attr(makeGriewankFunction, "type") = c("single-objective")
-attr(makeGriewankFunction, "tags") = c("continuous", "differentiable", "non-separable", "scalable", "multimodal")
+attr(makeGriewankFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal")

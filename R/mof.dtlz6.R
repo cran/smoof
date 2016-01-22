@@ -55,13 +55,13 @@ makeDTLZ6Function = function(dimensions, n.objectives) {
 
   # C++ implementation
   fn = function(x) {
-    stopifnot(length(x) == dimensions)
+    assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
     dtlz_6(x, M)
   }
 
   # Reference R implementation
   # fn = function(x) {
-  #   stopifnot(length(x) == dimensions)
+  #   assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
   #   f = numeric(M)
   #   n = length(x)
   #   theta = numeric(M-1)
@@ -82,6 +82,7 @@ makeDTLZ6Function = function(dimensions, n.objectives) {
 
   makeMultiObjectiveFunction(
     name = "DTLZ6 Function",
+    id = paste0("dtlz6_", dimensions, "d_", n.objectives, "o"),
     description = "Deb et al.",
     fn = fn,
     par.set =  makeNumericParamSet(
@@ -96,6 +97,6 @@ makeDTLZ6Function = function(dimensions, n.objectives) {
 }
 
 class(makeDTLZ6Function) = c("function", "smoof_generator")
-attr(makeDTLZ6Function, "name") = c("DTLZ6 Function")
+attr(makeDTLZ6Function, "name") = c("DTLZ6")
 attr(makeDTLZ6Function, "type") = c("multi-objective")
-attr(makeDTLZ6Function, "tags") = c()
+attr(makeDTLZ6Function, "tags") = c("multi-objective")

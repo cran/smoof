@@ -14,7 +14,9 @@
 makeBirdFunction = function() {
   makeSingleObjectiveFunction(
     name = "Bird Function",
+    id = "bird_2d",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = (x[1] - x[2])^2
       b = exp((1 - sin(x[1]))^2) * cos(x[2])
       c = exp((1 - cos(x[2]))^2) * sin(x[1])
@@ -37,6 +39,6 @@ makeBirdFunction = function() {
 }
 
 class(makeBirdFunction) = c("function", "smoof_generator")
-attr(makeBirdFunction, "name") = c("Bird Function")
+attr(makeBirdFunction, "name") = c("Bird")
 attr(makeBirdFunction, "type") = c("single-objective")
-attr(makeBirdFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeBirdFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
