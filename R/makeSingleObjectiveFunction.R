@@ -7,6 +7,7 @@
 #' @template arg_has_simple_signature
 #' @template arg_par_set
 #' @template arg_noisy
+#' @template arg_fn_mean
 #' @template arg_minimize
 #' @template arg_vectorized
 #' @template arg_constraint_fn
@@ -63,7 +64,7 @@
 #' print(autoplot(fn))
 #' @export
 makeSingleObjectiveFunction = function(
-  name,
+  name = NULL,
   id = NULL,
   description = NULL,
   fn,
@@ -71,6 +72,7 @@ makeSingleObjectiveFunction = function(
   vectorized = FALSE,
   par.set,
   noisy = FALSE,
+  fn.mean = NULL,
   minimize = TRUE,
   constraint.fn = NULL,
   tags = character(0),
@@ -80,7 +82,7 @@ makeSingleObjectiveFunction = function(
   smoof.fn = makeObjectiveFunction(
     name, id, description, fn,
     has.simple.signature, par.set, 1L,
-    noisy, minimize, vectorized, constraint.fn
+    noisy, fn.mean, minimize, vectorized, constraint.fn
   )
   n.params = getNumberOfParameters(smoof.fn)
 
@@ -133,6 +135,10 @@ print.smoof_function = function(x, ...) {
   catf("%s-objective function", n.objectives.text)
   if (isMultiobjective(x)) {
     catf("Number of objectives: %i", getNumberOfObjectives(x))
+    ref.point = getRefPoint(x)
+    if (!is.null(x)) {
+      catf("Reference point:      (%s)", collapse(ref.point, ", "))
+    }
   }
   catf("Name: %s", getName(x))
   description = getDescription(x)
@@ -140,7 +146,7 @@ print.smoof_function = function(x, ...) {
 
   catf("Tags: %s", collapse(getTags(x), sep = ", "))
   catf("Noisy: %s", as.character(isNoisy(x)))
-  catf("Minimize: %s", as.character(attr(x, "minimize")))
+  catf("Minimize: %s", collapse(shouldBeMinimized(x)))
   catf("Constraints: %s", as.character(hasConstraints(x)))
   catf("Number of parameters: %i", getNumberOfParameters(x))
   print(getParamSet(x))

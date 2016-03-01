@@ -4,10 +4,10 @@
 \alias{makeSingleObjectiveFunction}
 \title{Generator for single-objective target functions.}
 \usage{
-makeSingleObjectiveFunction(name, id = NULL, description = NULL, fn,
-  has.simple.signature = TRUE, vectorized = FALSE, par.set, noisy = FALSE,
-  minimize = TRUE, constraint.fn = NULL, tags = character(0),
-  global.opt.params = NULL, global.opt.value = NULL)
+makeSingleObjectiveFunction(name = NULL, id = NULL, description = NULL,
+  fn, has.simple.signature = TRUE, vectorized = FALSE, par.set,
+  noisy = FALSE, fn.mean = NULL, minimize = TRUE, constraint.fn = NULL,
+  tags = character(0), global.opt.params = NULL, global.opt.value = NULL)
 }
 \arguments{
 \item{name}{[\code{character(1)}]\cr
@@ -40,6 +40,10 @@ for further information.}
 
 \item{noisy}{[\code{logical(1)}]\cr
 Is the function noisy? Defaults to \code{FALSE}.}
+
+\item{fn.mean}{[\code{function}]\cr
+Optional true mean function in case of a noisy objective function. This functions should
+have the same mean as \code{fn}.}
 
 \item{minimize}{[\code{logical(1)}]\cr
 Set this to \code{TRUE} if the function should be minimized and to

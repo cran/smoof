@@ -4,10 +4,10 @@
 \alias{makeMultiObjectiveFunction}
 \title{Generator for multi-objective target functions.}
 \usage{
-makeMultiObjectiveFunction(name, id = NULL, description = NULL, fn,
+makeMultiObjectiveFunction(name = NULL, id = NULL, description = NULL, fn,
   has.simple.signature = TRUE, par.set, n.objectives, noisy = FALSE,
-  minimize = rep(TRUE, n.objectives), vectorized = FALSE,
-  constraint.fn = NULL)
+  fn.mean = NULL, minimize = rep(TRUE, n.objectives), vectorized = FALSE,
+  constraint.fn = NULL, ref.point = NULL)
 }
 \arguments{
 \item{name}{[\code{character(1)}]\cr
@@ -40,6 +40,10 @@ Number of objectives of the multi-objective function.}
 \item{noisy}{[\code{logical(1)}]\cr
 Is the function noisy? Defaults to \code{FALSE}.}
 
+\item{fn.mean}{[\code{function}]\cr
+Optional true mean function in case of a noisy objective function. This functions should
+have the same mean as \code{fn}.}
+
 \item{minimize}{[\code{logical}]\cr
 Logical vector of length \code{n.objectives} indicating if the corresponding
 objectives shall be minimized or maximized.
@@ -53,6 +57,9 @@ accept matrix of parameters? Default is \code{FALSE}.}
 Function which returns a logical vector indicating whether certain conditions
 are met or not. Default is \code{NULL}, which means, that there are no constraints
 beside possible box constraints defined via the \code{par.set} argument.}
+
+\item{ref.point}{[\code{numeric}]\cr
+Optional reference point in the objective space, e.g., for hypervolume computation.}
 }
 \value{
 [\code{function}] Target function with additional stuff attached as attributes.
