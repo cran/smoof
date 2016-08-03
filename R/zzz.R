@@ -9,5 +9,6 @@
 #' @importFrom Rcpp sourceCpp
 #' @importFrom grDevices colorRampPalette
 #' @importFrom graphics abline contour grid image plot points
-#' @importFrom stats reformulate
+#' @importFrom stats reformulate as.formula
+#' @importFrom plotly plot_ly
 NULL
