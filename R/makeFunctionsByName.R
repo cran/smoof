@@ -2,7 +2,8 @@
 #' Generate smoof function by passing a character vector of generator
 #' names.
 #'
-#' @description This function is especially useful in combination with
+#' @description
+#' This function is especially useful in combination with
 #' \code{\link{filterFunctionsByTags}} to generate a test set of functions
 #' with certain properties, e.~g., multimodality.
 #'
@@ -50,7 +51,7 @@ makeFunctionsByName = function(fun.names, ...) {
       } else if (args$dimensions == 2L) {
         return(do.call(generator, list()))
       } else {
-        stopf("Dimension > 3 passed, but '%s' is a non-scalable 2D function.", fun.name)
+        stopf("Dimension attribute passed, but '%s' is a non-scalable function.", fun.name)
       }
     }
   })
