@@ -5,8 +5,8 @@ Description: Provides generators for a high number of both single- and multi-
     objective test functions which are frequently used for the benchmarking of
     (numerical) optimization algorithms. Moreover, it offers a set of convenient
     functions to generate, plot and work with objective functions.
-Version: 1.5
-Date: 2017-04-25
+Version: 1.5.1
+Date: 2017-08-10
 Authors@R: c(person("Jakob", "Bossek", email = "j.bossek@gmail.com", role =
     c("aut", "cre")), person("Pascal", "Kerschke", email = "kerschke@uni-muenster.de",
     role = "ctb"))
@@ -22,9 +22,9 @@ ByteCompile: yes
 LinkingTo: Rcpp, RcppArmadillo
 RoxygenNote: 6.0.1
 NeedsCompilation: yes
-Packaged: 2017-04-26 08:36:39 UTC; jboss
+Packaged: 2017-08-14 11:28:14 UTC; jboss
 Author: Jakob Bossek [aut, cre],
   Pascal Kerschke [ctb]
 Maintainer: Jakob Bossek <j.bossek@gmail.com>
 Repository: CRAN
-Date/Publication: 2017-04-26 17:32:22 UTC
+Date/Publication: 2017-08-14 13:07:08 UTC

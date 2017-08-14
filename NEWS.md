@@ -1,21 +1,32 @@
-smoof 1.5.1
-===========
+# smoof 1.5.1
+
+## New features
+
+* Added: Shekel function
+* Added: inverted Vincent function
+* Added: modified Rastrigin function
+* Added: Hartmann{3,4,6} functions
+
+## Bugfixes
+
+* Better handling of additional arguments in makeFunctionsByName
+* convertTo{Minimization,Maximization} now flips sign of optima
+
+## Miscelaneous
 
 * logging and couting wrapper now have class smoof_function
-* Fixed: convertTo{Minimization,Maximization} now flips sign of optima
-* Better handling of additional arguments in makeFunctionsByName
-* Added Shekel function
-* Added inverted Vincent function
-* Added modified Rastrigin function
-* Added Hartmann{3,4,6} functions
 
-smoof 1.5
-=========
+# smoof 1.5
+
+## New features
 
 * Added shortcuts {s,m}nof for generating single-/multi-objective objective functionswith numeric parameters only
 * Added: missing single-objective tag for BBOB functions
 * Added: log.scale argument for autoplot
 * Added: CITATION file
+
+## Bugfixes
+
 * Fixed: precision issue caused by rPython respectively RJSONIO::toJSON, which by
   default strips numeric values to only 4 digits.
 * Fixed: ggplot2 warnings
@@ -25,8 +36,9 @@ smoof 1.5
 * Fixed: mean function was not set properly for noisy functions
 * Improved docs slighly
 
-smoof 1.4
-=========
+# smoof 1.4
+
+## New features
 
 * Added makeGOMOPFunction to create multi-objective test function based on a set of
   single objective functions.
@@ -36,6 +48,9 @@ smoof 1.4
 * Added first mixed parameter space funtion: Zhou2011
 * visualizeParetoOptimalFront now draws lines instead of points
 * Added possibility to draw interactive 3D surface plots via smoof::plot3D(fn, package = "plotly")
+
+## Bugfixes
+
 * Fixed: issue in formula and global optimum of BukinN2 function
 * overworked and refactored autoplot functions
   * dropped use.facets parameter (always use facets now if discrete parameters exist)
@@ -44,8 +59,9 @@ smoof 1.4
 * visualizeParetoOptimalFront now draws lines instead of points
 * Removed S3 method definition of getParamSet. This function is now contained in ParamHelpers 1.8
 
-smoof 1.3
-=========
+# smoof 1.3
+
+## New features
 
 * Added optional reference point ref.point for multi-objective functions
   - Reference point for ZDT functions is (11, 11)
@@ -57,8 +73,9 @@ smoof 1.3
 * makeMPM2Function now has additional parameters rotated and peak.shape
 * Modified: function name is optional now
 
-smoof 1.2
-=========
+# smoof 1.2
+
+## New features
 
 * Added: functions convertToMaximization and convertToMinimization
 * Added: main parameter for plot and autoplot. By default the function name is
@@ -76,12 +93,16 @@ smoof 1.2
 * makeFunctionsByName now expects a character vector generator names (the list
   methods was removed)
 * Generator names now do not contain the 'Function' suffix
+
+## Bugfixes
+
 * Fixed: autoplot and plot do not work for wrapped functions.
 * Fixed: hasConstraints for wrapped smoof functions
 * Fixed: getUpperBoxConstraints
 
-smoof 1.1
-=========
+# smoof 1.1
+
+## New features
 
 * Parameter set of predefined smoof function now contains a single vector parameter
   instead of multiple single numeric parameters. This is consistent with function
@@ -100,10 +121,12 @@ smoof 1.1
 * Added 2D single objective functions: Aluffi-Pentini-(Zirilli), Complex, Engvall,
   Jennrich-Sampsam, Judge, Kearfott
 * Renamed bochachevsky function to bohachevsky.n1
+
+## Bugfixes
+
 * Fixed some wrong tag assigments
 * Fixed global optimum of Giunta function
 
-smoof v1.0
-==========
+# smoof v1.0:
 
 * First submission to CRAN.
