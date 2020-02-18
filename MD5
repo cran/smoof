@@ -1,4 +1,4 @@
-2761ca36dc11430159ced2270ce5ae85 *DESCRIPTION
+dc5522f7650615c8b1d1b7c17dce4688 *DESCRIPTION
 85263fcced1855886ef0b5f4552d041a *LICENSE
 63428aa97c92555945a61951c7e49a05 *NAMESPACE
 39d47fd529e7a0ba48e475cab3409cca *NEWS
@@ -364,7 +364,7 @@ b09c4053309fe7746641c27e983b20cb *src/mof.MOP2.c
 1d8a0ed448283ade23ce2258f32b82b2 *src/mof.kursawe.cpp
 0d93f3b99244e7d92cd8e634a9870cde *src/mof.viennet.c
 4aa2cddb31557941efc06e4c9ea8be27 *src/mof.wfg.cpp
-a88ce0756447196bfc73dd28a27ee9b2 *tests/testthat/Rplots.pdf
+0d032c955dfb13ece111b1dc3bb34952 *tests/testthat/Rplots.pdf
 400da7a8da517118f9dd4254d858eba9 *tests/testthat/helper_zzz.R
 ad5d06dbaad0828050a664f92e97200e *tests/testthat/test_computeExpectedRunningTime.R
 580ebf8fe399b7d0dd97dce139724cf1 *tests/testthat/test_conversion.R
