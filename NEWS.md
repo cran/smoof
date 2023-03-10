@@ -1,3 +1,25 @@
+# smoof 1.6.0.3
+
+## New features
+
+* Added MMF1 to MMF13 problems from CEC2019 test suite
+* Added SYM-Part simple, SYM-Part rotated and Omni-Test problems from CEC2019 test suite
+* Added MMF14, MMF14a, MMF15 and MMF15a problems from CEC2019 test suite
+* Added parameter size to addLoggingWrapper for improved performance
+* getLoggedValues now correctly names function parameters.
+* BBOB test function now return an ID.
+* Changed: moved from rPython and RJSONIO to reticulate
+* Added vectorization to the MPM2 generator
+
+## Bugfixes
+
+* Fixed a bub in Machalewicz function (dimension was ignored when building parameter set)
+* Fix name of Powell Sum generator function.
+
+## Miscellaneous
+
+* Various packages moved from Imports to Suggests for less dependencies.
+
 # smoof 1.6.0
 
 ## New features

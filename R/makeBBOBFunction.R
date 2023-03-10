@@ -18,7 +18,7 @@
 #' if (require(plot3D)) {
 #'   plot3D(fn, contour = TRUE)
 #' }
-#' @references See the \href{http://coco.gforge.inria.fr/doku.php?id=bbob-2009-downloads}{BBOB website}
+#' @references See the \href{http://numbbo.github.io/coco/?id=bbob-2009-downloads}{BBOB website}
 #' for a detailed description of the BBOB functions.
 #' @export
 makeBBOBFunction = function(dimensions, fid, iid) {
@@ -46,6 +46,7 @@ makeBBOBFunction = function(dimensions, fid, iid) {
 
   makeSingleObjectiveFunction(
     name = sprintf("BBOB_%i_%i_%i", dimensions, fid, iid),
+    id = sprintf("bbob_%i_%i_%i", dimensions, fid, iid),
     description = sprintf("%i-th noiseless BBOB function\n(FID: %i, IID: %i, DIMENSION: %i)",
       fid, fid, iid, dimensions),
     fn = function(x) {
